@@ -34,6 +34,7 @@ else ifeq ($(UNAME_SYS), Linux)
 	CXXFLAGS ?= -g -O3 -finline-functions -Wall
 endif
 
+
 ifeq ($(UNAME_SYS), Darwin)
 	ifneq ($(HOMEBREW), "")
 		HOMEBREW_PREFIX = $(shell brew --prefix)
