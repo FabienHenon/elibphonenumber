@@ -76,7 +76,7 @@ priv_dir() ->
 %% for.
 
 get_supported_regions() ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_alpha_number(Number::binary()) -> boolean().
 
@@ -88,7 +88,7 @@ get_supported_regions() ->
 %% IsValidNumber should be used.
 
 is_alpha_number(_Number) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec convert_alpha_characters_in_number(Number::binary()) -> binary().
 
@@ -96,7 +96,7 @@ is_alpha_number(_Number) ->
 %% a keypad, but retains existing formatting.
 
 convert_alpha_characters_in_number(_Number) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec normalize_digits_only(Number::binary()) -> binary().
 
@@ -105,7 +105,7 @@ convert_alpha_characters_in_number(_Number) ->
 %% strips punctuation and alpha characters.
 
 normalize_digits_only(_Number) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec normalize_diallable_chars_only(Number::binary()) -> binary().
 
@@ -114,7 +114,7 @@ normalize_digits_only(_Number) ->
 %% all non-ASCII digits).
 
 normalize_diallable_chars_only(_Number) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_national_significant_number(
     PhoneNumber::phonenumber()
@@ -124,7 +124,7 @@ normalize_diallable_chars_only(_Number) ->
 %% significant number doesn't contain a national prefix or any formatting.
 
 get_national_significant_number(_PhoneNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_length_of_national_destination_code(
     PhoneNumber::phonenumber()
@@ -140,17 +140,17 @@ get_national_significant_number(_PhoneNumber) ->
 %% PhoneNumber = phonenumber_util:parse(<<"16502530000">>, <<"US">>),
 %% NationalSignificantNumber = phonenumber_util:get_national_significant_number(PhoneNumber),
 %% NationalDestinationCodeLength = phonenumber_util:get_length_of_national_destination_code(PhoneNumber),
-%% {NationalDestinationCode, SubscriberNumber} = if 
+%% {NationalDestinationCode, SubscriberNumber} = if
 %%     NationalDestinationCodeLength > 0 ->
 %%         {binary:part(NationalSignificantNumber, NationalDestinationCodeLength),
 %%         binary:part(NationalSignificantNumber, NationalDestinationCodeLength, byte_size(NationalSignificantNumber))};
 %%     true ->
-%%     {<<>>, NationalSignificantNumber} 
-%% end.       
+%%     {<<>>, NationalSignificantNumber}
+%% end.
 %% '''
 
-get_length_of_national_destination_code(_PhoneNumber) -> 
-    exit(nif_library_not_loaded).
+get_length_of_national_destination_code(_PhoneNumber) ->
+    nif_error(nif_library_not_loaded).
 
 -spec get_length_of_geograpical_area_code(
     PhoneNumber::phonenumber()
@@ -166,7 +166,7 @@ get_length_of_national_destination_code(_PhoneNumber) ->
 %% PhoneNumber = phonenumber_util.parse(<<"16502530000">>,<<"US">>),
 %% NationalSignificantNumber = phonenumber_util.get_national_significant_number(PhoneNumber),
 %% AreaCodeLength = phonenumber_util.get_lenth_of_geographical_area_code(PhoneNumber),
-%% {AreaCode, SubscriberNumber} = if 
+%% {AreaCode, SubscriberNumber} = if
 %%     AreaCodeLength > 0 ->
 %%          {binary:part(NationalSignificantNumber, AreaCodeLength),
 %%          binary:part(NationalSignificantNumber, AreaCodeLength, byte_size(NationalSignificantNumber))};
@@ -194,7 +194,7 @@ get_length_of_national_destination_code(_PhoneNumber) ->
 %%  - some geographical numbers have no area codes.
 
 get_length_of_geograpical_area_code(_PhoneNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_country_mobile_token(CountryCallingCode::non_neg_integer()) -> binary().
 
@@ -204,10 +204,10 @@ get_length_of_geograpical_area_code(_PhoneNumber) ->
 %% abroad.
 
 get_country_mobile_token(_CountryCallingCode) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec format(
-    PhoneNumber::phonenumber(), 
+    PhoneNumber::phonenumber(),
     PhoneNumberFormat::phonenumber_format()
     ) -> FormattedNumber::binary().
 
@@ -219,18 +219,18 @@ get_country_mobile_token(_CountryCallingCode) ->
 %% same area who could potentially dial the number without area code.
 
 format(_PhoneNumber, _PhoneNumberFormat) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec format_by_pattern(
     PhoneNumber::phonenumber(),
     PhoneNumberFormat::phonenumber_format(),
     UserDefinedFormats::list(phonenumber_format())
-    ) -> FormattedNumber::binary(). 
+    ) -> FormattedNumber::binary().
 
 %% @doc TODO
 
 format_by_pattern(_PhoneNumber, _PhoneNumberFormat, _UserDefinedFormats) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec format_national_number_with_carrier_code(
     PhoneNumber::phonenumber(),
@@ -244,7 +244,7 @@ format_by_pattern(_PhoneNumber, _PhoneNumberFormat, _UserDefinedFormats) ->
 %% number in national format without any carrier code.
 
 format_national_number_with_carrier_code(_PhoneNumber, _CarrierCode) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec format_national_number_with_preferred_carrier_code(
     PhoneNumber::phonenumber(),
@@ -263,7 +263,7 @@ format_national_number_with_carrier_code(_PhoneNumber, _CarrierCode) ->
 %% when formatting.
 
 format_national_number_with_preferred_carrier_code(_PhoneNumber, _FallbackCarrierCode) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec format_number_for_mobile_dialing(
     PhoneNumber::phonenumber(),
@@ -277,7 +277,7 @@ format_national_number_with_preferred_carrier_code(_PhoneNumber, _FallbackCarrie
 %% outside of the country), the method returns an empty string.
 
 format_number_for_mobile_dialing(_PhoneNumber, _RegionCallingFrom, _WithFormatting) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec format_out_of_country_calling_number(
     PhoneNumber::phonenumber(),
@@ -293,7 +293,7 @@ format_number_for_mobile_dialing(_PhoneNumber, _RegionCallingFrom, _WithFormatti
 %% format will be returned instead.
 
 format_out_of_country_calling_number(_PhoneNumber, _CallingFrom) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec format_in_original_format(
     PhoneNumber::phonenumber(),
@@ -308,7 +308,7 @@ format_out_of_country_calling_number(_PhoneNumber, _CallingFrom) ->
 %% the raw input when it is available.
 
 format_in_original_format(_PhoneNumber, _RegionCallingFrom) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec format_out_of_country_keeping_alpha_chars(
     PhoneNumber::phonenumber(),
@@ -334,7 +334,7 @@ format_in_original_format(_PhoneNumber, _RegionCallingFrom) ->
 %% so this is not a huge problem - and will be fixed if it proves to be so.
 
 format_out_of_country_keeping_alpha_chars(_PhoneNumber, _CallingFrom) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec truncate_too_long_number(
     PhoneNumber::phonenumber()
@@ -347,14 +347,14 @@ format_out_of_country_keeping_alpha_chars(_PhoneNumber, _CallingFrom) ->
 %% be successfully extracted.
 
 truncate_too_long_number(_PhoneNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_number_type(PhoneNumber::phonenumber()) -> phonenumber_type().
 
 %% @doc Gets the type of a phone number.
 
 get_number_type(_PhoneNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_valid_number(PhoneNumber::phonenumber()) -> boolean().
 
@@ -363,7 +363,7 @@ get_number_type(_PhoneNumber) ->
 %% looking at a number itself.
 
 is_valid_number(_PhoneNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_valid_number_for_region(
     PhoneNumber::phonenumber(),
@@ -384,7 +384,7 @@ is_valid_number(_PhoneNumber) ->
 %% since it has its own region code, "IM", which may be undesirable.
 
 is_valid_number_for_region(_PhoneNumber, _Region) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_region_code_for_number(
     PhoneNumber::phonenumber()
@@ -394,7 +394,7 @@ is_valid_number_for_region(_PhoneNumber, _Region) ->
 %% geo-coding at the region level.
 
 get_region_code_for_number(_PhoneNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_country_code_for_region(
     RegionCode::binary()
@@ -404,7 +404,7 @@ get_region_code_for_number(_PhoneNumber) ->
 %% this would be 1 for the United States, and 64 for New Zealand.
 
 get_country_code_for_region(_RegionCode) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_region_code_for_country_code(
     CountryCode::non_neg_integer()
@@ -420,7 +420,7 @@ get_country_code_for_region(_RegionCode) ->
 %% the UN M.49 schema).
 
 get_region_code_for_country_code(_CountryCode) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_region_codes_for_country_calling_code(
     CountryCallingCode::non_neg_integer()
@@ -432,7 +432,7 @@ get_region_code_for_country_code(_CountryCode) ->
 %% is left unchanged.
 
 get_region_codes_for_country_calling_code(_CountryCallingCode) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_nanpa_country(RegionCode::binary()) -> boolean().
 
@@ -440,10 +440,10 @@ get_region_codes_for_country_calling_code(_CountryCallingCode) ->
 %% Administration (NANPA).
 
 is_nanpa_country(_RegionCode) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_ndd_prefix_for_region(
-    RegionCode::binary(), 
+    RegionCode::binary(),
     StripNonDigits::boolean()
     ) -> NationalPrefix::binary().
 
@@ -454,7 +454,7 @@ is_nanpa_country(_RegionCode) ->
 %% present, we return an empty string.
 
 get_ndd_prefix_for_region(_RegionCode, _StripNonDigits) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_possible_number_with_reason(
     PhoneNumber::phonenumber()
@@ -479,7 +479,7 @@ get_ndd_prefix_for_region(_RegionCode, _StripNonDigits) ->
 %%      subscriber-number-only version.
 
 is_possible_number_with_reason(_PhoneNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_possible_number(
     PhoneNumber::phonenumber()
@@ -489,7 +489,7 @@ is_possible_number_with_reason(_PhoneNumber) ->
 %% the reason for failure, this method returns a boolean value.
 
 is_possible_number(_PhoneNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_possible_number_for_string(
     Number::binary(),
@@ -498,13 +498,13 @@ is_possible_number(_PhoneNumber) ->
 
 %% @doc Checks whether a phone number is a possible number given a number in the
 %% form of a string, and the country where the number could be dialed from.
-%% It provides a more lenient check than is_valid_number/1. 
+%% It provides a more lenient check than is_valid_number/1.
 %% See is_possible_number/1 for details.
-%% 
+%%
 %% This method first parses the number, then invokes
 %% is_possible_number with the resultant PhoneNumber
 %% object.
-%% 
+%%
 %% region_dialing_from represents the region that we are expecting the number
 %% to be dialed from. Note this is different from the region where the number
 %% belongs. For example, the number +1 650 253 0000 is a number that belongs
@@ -514,10 +514,10 @@ is_possible_number(_PhoneNumber) ->
 %% 650 253 0000, it could only be dialed from within the US, and when written
 %% as 253 0000, it could only be dialed from within a smaller area in the US
 %% (Mountain View, CA, to be more specific).
-%% @see is_possible_number. 
+%% @see is_possible_number.
 
 is_possible_number_for_string(_Number, _RegionDialingFrom) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_example_number(
     RegionCode::binary()
@@ -529,7 +529,7 @@ is_possible_number_for_string(_Number, _RegionDialingFrom) ->
 %% GetExampleNumberForNonGeoEntity instead.
 
 get_example_number(_RegionCode) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_example_number_for_type(
     RegionCode::binary(),
@@ -542,7 +542,7 @@ get_example_number(_RegionCode) ->
 %% call GetExampleNumberForNonGeoEntity instead.
 
 get_example_number_for_type(_RegionCode, _PhoneNumberType) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec get_example_number_for_non_geo_entity(
     CountryCallingCode::binary()
@@ -554,7 +554,7 @@ get_example_number_for_type(_RegionCode, _PhoneNumberType) ->
 %% a non-geographical entity.
 
 get_example_number_for_non_geo_entity(_CountryCallingCode) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec parse(
     NumberToParse::binary(),
@@ -578,7 +578,7 @@ get_example_number_for_non_geo_entity(_CountryCallingCode) ->
 %% "ZZ" can be supplied.
 
 parse(_NumberToParse, _DefaultRegion) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec parse_and_keep_raw_input(
     NumberToParse::binary(),
@@ -591,7 +591,7 @@ parse(_NumberToParse, _DefaultRegion) ->
 %% field.
 
 parse_and_keep_raw_input(_NumberToParse, _DefaultRegion) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_number_match(
     FirstNumber::phonenumber(),
@@ -613,7 +613,7 @@ parse_and_keep_raw_input(_NumberToParse, _DefaultRegion) ->
 %% SHORT_NSN_MATCH. The numbers +1 345 657 1234 and 345 657 are a NO_MATCH.
 
 is_number_match(_FirstNumber, _SecondNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_number_match_with_two_strings(
     FirstNumber::binary(),
@@ -627,7 +627,7 @@ is_number_match(_FirstNumber, _SecondNumber) ->
 %% number.
 
 is_number_match_with_two_strings(_FirstNumber, _SecondNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
 
 -spec is_number_match_with_one_string(
     FirstNumber::phonenumber(),
@@ -641,4 +641,4 @@ is_number_match_with_two_strings(_FirstNumber, _SecondNumber) ->
 %% number.
 
 is_number_match_with_one_string(_FirstNumber, _SecondNumber) ->
-    exit(nif_library_not_loaded).
+    nif_error(nif_library_not_loaded).
