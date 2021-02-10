@@ -17,7 +17,8 @@ UNAME_SYS := $(shell uname -s)
 HOMEBREW  := $(shell { type brew; } 2>/dev/null)
 
 ifeq ($(UNAME_SYS), Darwin)
-	CC ?= clang++ -std=c++11 -stdlib=libc++
+	#CC ?= clang++ -std=c++11 -stdlib=libc++
+	CC ?= gcc
 	CXXFLAGS ?= -O3 -arch x86_64 -Wall
 	LDFLAGS ?= -arch x86_64 -flat_namespace -undefined suppress
 else ifeq ($(UNAME_SYS), FreeBSD)
